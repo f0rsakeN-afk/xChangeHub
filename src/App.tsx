@@ -1,10 +1,14 @@
-import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import PageNotFound from './pages/PageNotFound'
 
-type Props = {}
 
-const App = (props: Props) => {
+const App = () => {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
