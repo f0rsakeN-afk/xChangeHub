@@ -11,7 +11,11 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         <div className={className}>
             <Logo />
             {/* //Some items will be added later on */}
-            <Button variant={"secondary"}><Github /> View Source</Button>
+            <Button variant={"secondary"}>
+                <a href="https://github.com/f0rsakeN-afk/xChangeHub" className="flex items-center gap-2">
+                    <Github /> View Source
+                </a>
+            </Button>
         </div>
     )
 }
