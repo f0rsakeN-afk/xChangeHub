@@ -1,7 +1,15 @@
+import Logo from "./Logo"
 
-const Footer = () => {
+interface FooterProps {
+    className?: string
+}
+
+const Footer: React.FC<FooterProps> = ({ className }) => {
     return (
-        <div>Footer</div>
+        <div className={className}>
+            <Logo />
+            <p className=" font-medium text-muted-foreground">&copy; 2025 xChangeHub. All Rights Reserved.</p>
+        </div>
     )
 }
 
