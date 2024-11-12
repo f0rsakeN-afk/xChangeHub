@@ -11,3 +11,9 @@ export interface CurrencyExchangeData {
     [currencyCode: string]: number;
   };
 }
+
+
+export interface sortConfig {
+  key: string;
+  direction: "asc" | "desc";
+}
