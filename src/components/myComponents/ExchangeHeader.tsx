@@ -1,27 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 import { fetchCurrencyCodes } from "@/services/fetchCodeTypes";
 import { Badge } from "../ui/badge";
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "../ui/select";
 import { CardDescription, CardTitle, CardHeader, CardContent, Card } from "../ui/card";
 import { CurrencyExchangeData } from "@/types";
+import { fetchCurrencyExchangeData } from "@/services/fetchCurrencyExchangeData";
 
 interface dataProps extends CurrencyExchangeData {
     success?: string
 }
 
 
-
 const ExchangeHeader = ({ data }: dataProps) => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
+    const [baseCode, setBaseCode] = useState<string>('')
 
 
     useEffect(() => {
-        dispatch(fetchCurrencyCodes())
-    }, [])
+        dispatch(fetchCurrencyCodes());
+        if (baseCode) {
+            dispatch(fetchCurrencyExchangeData(baseCode))
+        }
+    }, [dispatch, baseCode])
+
 
     const { isLoading, codeTypesData } = useAppSelector(state => state.cdData)
-    console.log(codeTypesData)
+
+
+    const handleBaseCodeChange = (code: string) => {
+        setBaseCode(code);
+        //console.log(code)
+    }
     return (
         <Card className="mb-6 shadow-lg border-t-4 border-t-primary">
             <CardHeader className="space-y-4">
@@ -33,7 +43,7 @@ const ExchangeHeader = ({ data }: dataProps) => {
                     <Badge className="px-3 py-1 text-md font-semibold">
                         {data?.base_code}
                     </Badge>
-                    <Select >
+                    <Select onValueChange={handleBaseCodeChange}>
                         <SelectTrigger className="w-[280px]">
                             <SelectValue placeholder={'Base Code'} />
                         </SelectTrigger>
