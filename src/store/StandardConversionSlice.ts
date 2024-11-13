@@ -29,7 +29,6 @@ const StandardConversionSlice = createSlice({
         (state, action: PayloadAction<CurrencyExchangeData>) => {
           state.isLoading = false;
           state.standardConversionData = action.payload;
-          console.log(action.payload);
           state.error = null;
         }
       )
