@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import StandardData from "./StandardConversionSlice";
+import CodeTypes from "./CodesSlice";
 
 export const store = configureStore({
   reducer: {
     stData: StandardData,
+    cdData: CodeTypes,
   },
 });
 
