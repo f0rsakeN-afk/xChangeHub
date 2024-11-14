@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 import { fetchCurrencyCodes } from "@/services/fetchCodeTypes";
 import { Badge } from "../ui/badge";
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "../ui/select";
 import { CardDescription, CardTitle, CardHeader, CardContent, Card } from "../ui/card";
 import { fetchCurrencyExchangeData } from "@/services/fetchCurrencyExchangeData";
-import { Skeleton } from "../ui/skeleton"; 
+import { Skeleton } from "../ui/skeleton";
 
-const ExchangeHeader = () => {
+
+interface ExchangeHeaderProps {
+    baseCode: string;
+    setBaseCode: (code: string) => void
+}
+
+const ExchangeHeader = ({ baseCode, setBaseCode }: ExchangeHeaderProps) => {
     const dispatch = useAppDispatch();
-    const [baseCode, setBaseCode] = useState<string>('')
 
     useEffect(() => {
         dispatch(fetchCurrencyExchangeData())
