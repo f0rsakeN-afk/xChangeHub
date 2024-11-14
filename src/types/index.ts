@@ -3,7 +3,7 @@ export interface CurrencyExchangeData {
   documentation: string;
   terms_of_use: string;
   time_last_update_unix: number;
-  last_time_update_utc: string;
+  time_last_update_utc: string;
   time_next_update_unix: number;
   time_next_update_utc: string;
   base_code: string;
@@ -20,7 +20,7 @@ export interface sortConfig {
 export interface CodeTypes {
   documentation: string;
   terms_of_use: string;
-  supportes_codes: {
+  supported_codes: {
     [currencyCodes: string]: string;
   };
 }
