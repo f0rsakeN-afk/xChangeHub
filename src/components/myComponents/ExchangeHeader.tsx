@@ -49,16 +49,20 @@ const ExchangeHeader = ({ baseCode, setBaseCode }: ExchangeHeaderProps) => {
                                 <Badge className="px-3 py-1 text-md font-semibold">
                                     {standardConversionData?.base_code}
                                 </Badge>
-                                <Select onValueChange={handleBaseCodeChange}>
+                                <Select onValueChange={handleBaseCodeChange} value={baseCode}>
                                     <SelectTrigger className="w-[280px]">
                                         <SelectValue placeholder={'Base Code'} />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {codeTypesData?.supported_codes.map(([code, name], index) => (
+                                        {codeTypesData?.supported_codes?.map(([code, name]: [string, string], index: number) => (
                                             <SelectItem key={index} value={code}>
-                                                {code} - {name}
-                                            </SelectItem>
-                                        ))}
+                                            {code}
+                                            <span className="hidden sm:inline md:inline lg:inline xl:inline 2xl:inline">
+                                                - {name}
+                                            </span>
+                                        </SelectItem>
+
+                                    ))}
                                     </SelectContent>
                                 </Select>
                         </>

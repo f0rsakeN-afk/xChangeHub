@@ -20,9 +20,7 @@ export interface sortConfig {
 export interface CodeTypes {
   documentation: string;
   terms_of_use: string;
-  supported_codes: {
-    [currencyCodes: string]: string;
-  };
+  supported_codes: [string, string][];
 }
 
 export interface CompareCurrency {
@@ -35,4 +33,5 @@ export interface CompareCurrency {
   base_code: string;
   target_code: string;
   conversion_rate: number;
+  conversion_result?: number | null;
 }
